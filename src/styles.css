@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+.mainFrame {
+  position: relative;
+  height:95%;
+}
+.mainHeader{
+  position: relative;
+  height: 5%;
+}
+
+html, body {
+  height: 100%;
+}
+
+
+.mainContent{
+  position: relative;
+  height: 86%;
+
+}
+.mainFooter{
+  position: relative;
+  height: 7%;
+}
+.mainSearch{
+  position: relative;
+  height: 7%;
+}
+
