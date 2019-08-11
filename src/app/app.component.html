@@ -18,11 +18,11 @@
             filter menu
           </div>
           <div class="divAppContent col-md-9  border  border-primary bg-warning  pre-scrollable">
-             <app-content></app-content>
+             <app-content  [games]="games"></app-content>
           </div>
         </div>
-        <div class="row mainFooter bg-success">
-          footer
+        <div class="row mainFooter bg-success d-flex justify-content-center pt-2">
+          <app-footer [numOfPages]=10 ></app-footer>
         </div>
     </div>
   </div>
