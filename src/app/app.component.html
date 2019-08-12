@@ -22,7 +22,13 @@
           </div>
         </div>
         <div class="row mainFooter bg-success d-flex justify-content-center pt-2">
-          <app-footer [numOfPages]=10 ></app-footer>
+
+
+          <app-footer
+              [numOfItems]=40
+              [itemsPerPage]=8
+              [currentPage]=3
+          ></app-footer>
         </div>
     </div>
   </div>
