@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'ProjectWeb';
+  itemsPerPage = 3;
   games = [];
+  currentPage: number = 1;
 
   ngOnInit() {
     this.games.push({
@@ -39,8 +39,12 @@ export class AppComponent implements OnInit {
       genreName:     'Advanture'
     })
   };
-
-
-
+  changePage(numP: number) {
+    this.currentPage = numP;
+  }
+  get gamesArr():any {
+    let pageIndex = (this.currentPage-1) * this.itemsPerPage
+    return this.games.slice(pageIndex,pageIndex + this.itemsPerPage);
+  }
 
 }

@@ -7,7 +7,7 @@ import {Component, Input,} from '@angular/core';
 })
 export class ContentComponent {
   @Input()
-  games:any;
+  gamesContentArr:any;
 
 
   constructor() { }

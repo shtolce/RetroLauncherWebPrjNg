@@ -18,16 +18,17 @@
             filter menu
           </div>
           <div class="divAppContent col-md-9  border  border-primary bg-warning  pre-scrollable">
-             <app-content  [games]="games"></app-content>
+             <app-content  [gamesContentArr]="gamesArr"></app-content>
           </div>
         </div>
         <div class="row mainFooter bg-success d-flex justify-content-center pt-2">
-
-
           <app-footer
-              [numOfItems]=40
-              [itemsPerPage]=8
-              [currentPage]=3
+              [numOfItems]="games.length"
+              [itemsPerPage]="itemsPerPage"
+              [currentPage]="currentPage"
+              (onPage)="changePage($event)"
+              (nextPage)="changePage($event)"
+              (prevPage)="changePage($event)"
           ></app-footer>
         </div>
     </div>
