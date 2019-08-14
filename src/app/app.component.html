@@ -1,21 +1,37 @@
 
 <div class="h-100 pb-2 pr-3">
   <div class="row mainHeader bg-dark">
-  header
+  <app-header></app-header>
   </div>
 
   <div class="row mainFrame">
     <div class="col-md-2  border  border-primary h-100 bg-dark">
-      leftPanel
+      <app-favorites [favArr] = "favoritesArray"></app-favorites>
     </div>
 
-    <div class="mainFrame col-md-10 h-100">
-        <div class="row mainSearch bg-success">
-        search
+    <div class="mainFrame col-md-10 h-100 w-100">
+        <div class="row mainSearch bg-success pt-3">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+
+            <app-search (onChangeEm)="search($event)">
+
+            </app-search>
+          </div>
+          <div class="col-md-4">
+          </div>
         </div>
         <div class="row mainContent">
           <div class="col-md-3  border  border-primary h-100 bg-info">
-            filter menu
+            <app-filter
+            [genres] = "genres"
+            [platformes]="platformes"
+            (onGenreCheckEm)="onGenreCheck($event)"
+            (onPlatformCheckEm)="onPlatformCheck($event)"
+            >
+
+            </app-filter>
           </div>
           <div class="divAppContent col-md-9  border  border-primary bg-warning  pre-scrollable">
              <app-content  [gamesContentArr]="gamesArr"></app-content>
