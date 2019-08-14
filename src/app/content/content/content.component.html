@@ -1,0 +1,19 @@
+  <table class="gamesTable table table-hover" >
+    <tbody>
+            <tr *ngFor='let gameItem of gamesContentArr' class="gameTableRow">
+                <td class="w-25">
+                  <img src="https://pp.userapi.com/c307708/v307708812/ae36/A0cs3LRpzuQ.jpg" width="100">
+                </td>
+                <td class="w-50">
+                  <h5 class="text-truncate text-dark"><b>{{gameItem.shortName}}</b></h5>
+                  <div class="text-truncate blockquote-footer">{{gameItem.fullName}}</div>
+                  <div class="text-truncate text-dark">{{gameItem.genreName}}</div>
+                  <div class="text-truncate text-secondary">{{gameItem.year}}</div>
+                  <h6 class="text-truncate text-muted">{{gameItem.platformType}}</h6>
+                </td>
+                <td style="vertical-align: bottom" class="w-25">
+                  <button type="button" class="mb-3 btn btn-primary btn-round-xs btn-xs">Скачать</button>
+                </td>
+            </tr>
+    </tbody>
+  </table>

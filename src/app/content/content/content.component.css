@@ -1,0 +1,14 @@
+.gamesTable  {
+  position: relative;;
+  width: 100%;
+}
+
+
+.gamesTable td {
+  position: relative;
+  text-align: left;
+  padding-right: 2%;
+}
+.gameTableRow {
+  border-bottom:1pt solid silver;
+}

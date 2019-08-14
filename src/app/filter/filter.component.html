@@ -1,0 +1,29 @@
+<div class="mt-3 h-50 pre-scrollable">
+  <h5>Жанры</h5>
+    <div class="form-check" *ngFor="let item of gameGenres">
+      <input class="form-check-input"
+             type="checkbox" id={{item.genre}}
+             [checked]="item.checked"
+             (change)="onGenreCheck($event)"
+      >
+      <label class="form-check-label" for={{item.genre}}>
+        {{item.genre}}
+      </label>
+    </div>
+</div>
+
+<hr>
+<div class="mt-3 h-50">
+    <h5>Платформы</h5>
+    <div class="form-check" *ngFor="let item of gamePlatformes">
+      <input class="form-check-input"
+             type="checkbox"
+             id={{item.platform}}
+             [checked]="item.checked"
+             (change)="onPlatformCheck($event)"
+      >
+      <label class="form-check-label" for={{item.platform}}>
+        {{item.platform}}
+      </label>
+    </div>
+</div>
