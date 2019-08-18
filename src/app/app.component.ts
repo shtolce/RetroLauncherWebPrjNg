@@ -20,11 +20,16 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-    this.games = this.repo.getGames();
+    //this.games = this.repo.getGames();
+
+    this.repo.getGames().subscribe((res)=>{
+      this.games = res;
+      this.getPlatformes();
+      this.getGenres();
+    });
+
     this.favoritesArray = this.repo.getFavorites();
 
-    this.getPlatformes();
-    this.getGenres();
   };
   changePage(numP: number) {
     this.currentPage = numP;

@@ -1,6 +1,5 @@
-import {Http} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import {Injectable} from "@angular/core";
-
 
 @Injectable()
 export class RepositorySevice {
@@ -11,7 +10,25 @@ export class RepositorySevice {
   private games = [];
   private favoritesArray = [];
   getGames() {
-    //return this.http.get('');
+     let data = this.http.get('https://localhost:44354/api/values/getAll').
+     map((response: Response)=>{
+
+       let dataResponse = response.json();
+
+         dataResponse = dataResponse.map(dat =>{return {
+           'shortName': dat.nameSecond,
+           'fullName' : dat.name,
+           'platformType' : dat.platform.platformName,
+           'year' : dat.year,
+           'genreName' : dat.genre
+         }
+       });
+      return dataResponse;
+    });
+    console.log(typeof(data));
+     return data;
+
+    /*
     this.games.push({
       shortName:     'Vasya',
       fullName:      'Poniy Vasya',
@@ -48,6 +65,7 @@ export class RepositorySevice {
       genreName:     'Advanture'
     })
     return this.games;
+    */
 
   }
   getFavorites() {
