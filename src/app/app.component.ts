@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
     //this.games = this.repo.getGames();
 
     this.repo.getGames().subscribe((res)=>{
+      console.log(res);
       this.games = res;
       this.getPlatformes();
       this.getGenres();

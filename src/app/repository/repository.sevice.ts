@@ -16,7 +16,7 @@ export class RepositorySevice {
        let dataResponse = response.json();
 
          dataResponse = dataResponse.map(dat =>{return {
-           'shortName': dat.nameSecond,
+           'shortName': dat.nameSecond?dat.nameSecond:'N/A',
            'fullName' : dat.name,
            'platformType' : dat.platform.platformName,
            'year' : dat.year,
@@ -25,7 +25,6 @@ export class RepositorySevice {
        });
       return dataResponse;
     });
-    console.log(typeof(data));
      return data;
 
     /*
