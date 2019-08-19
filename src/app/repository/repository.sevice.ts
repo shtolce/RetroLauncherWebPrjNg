@@ -8,7 +8,31 @@ export class RepositorySevice {
 
   }
   private games = [];
+  private genres = [];
+  private platformes = [];
   private favoritesArray = [];
+
+  getGenres() {
+    let data = this.http.get('https://localhost:44354/api/values/getGenres').
+    map((response: Response)=>{
+
+      let dataResponse = response.json();
+      return dataResponse;
+    });
+    return data;
+  }
+
+  getPlatformes() {
+    let data = this.http.get('https://localhost:44354/api/values/getPlatforms').
+    map((response: Response)=>{
+
+      let dataResponse = response.json();
+      return dataResponse;
+    });
+    return data;
+  }
+
+
   getGames() {
      let data = this.http.get('https://localhost:44354/api/values/getAll').
      map((response: Response)=>{
@@ -16,57 +40,19 @@ export class RepositorySevice {
        let dataResponse = response.json();
 
          dataResponse = dataResponse.map(dat =>{return {
-           'shortName': dat.nameSecond?dat.nameSecond:'N/A',
-           'fullName' : dat.name,
+           'shortName'    : dat.nameSecond?dat.nameSecond:'N/A',
+           'fullName'     : dat.name,
            'platformType' : dat.platform.platformName,
-           'year' : dat.year,
-           'genreName' : dat.genre
+           'year'         : dat.year,
+           'genreName'    : dat.genre,
+           'imgUrl'       : dat.imgUrl
          }
        });
       return dataResponse;
     });
      return data;
-
-    /*
-    this.games.push({
-      shortName:     'Vasya',
-      fullName:      'Poniy Vasya',
-      platformType:  'Dendy',
-      year:          1989,
-      genreName:     'RPG'
-    });
-    this.games.push({
-      shortName:     'Terminator2',
-      fullName:      'Terminator2 Jujment day frfrfrfrfrfrfrfrfrfr',
-      platformType:  'Sega',
-      year:          1989,
-      genreName:     'Shooter'
-    })
-    this.games.push({
-      shortName:     'Mario',
-      fullName:      'Super Mario Bros.',
-      platformType:  'Dendy',
-      year:          1991,
-      genreName:     'Arcade'
-    })
-    this.games.push({
-      shortName:     'MarioII',
-      fullName:      'Super Mario Bros.II',
-      platformType:  'PS4',
-      year:          1991,
-      genreName:     'Arcade'
-    })
-    this.games.push({
-      shortName:     'Igor Zaebal',
-      fullName:      'Igor Zaebal Legacy.',
-      platformType:  'Dendy',
-      year:          2018,
-      genreName:     'Advanture'
-    })
-    return this.games;
-    */
-
   }
+
   getFavorites() {
     this.favoritesArray.push({
       shortName:     'Vasya'

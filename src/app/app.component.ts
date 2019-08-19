@@ -6,7 +6,7 @@ import {RepositorySevice} from "./repository/repository.sevice";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  itemsPerPage = 3;
+  itemsPerPage = 5;
   favoritesArray = [];
   currentPage: number = 1;
   mappedGenresArr;
@@ -17,16 +17,30 @@ export class AppComponent implements OnInit {
 
   }
 
-
-
   ngOnInit() {
     //this.games = this.repo.getGames();
+    this.repo.getGenres().subscribe((res)=>{
+      this.mappedGenresArr = res.map((data)=>{
+        return {
+          'genre':data,
+          'checked':true
+        }
+      });
+    });
+    this.repo.getPlatformes().subscribe((res)=>{
+      this.mappedPlatformesArr = res.map((data)=>{
+        return {
+          'platform':data,
+          'checked':true
+        }
+      });;
+    });
+
 
     this.repo.getGames().subscribe((res)=>{
-      console.log(res);
       this.games = res;
-      this.getPlatformes();
-      this.getGenres();
+      //this.getPlatformes();
+      //this.getGenres();
     });
 
     this.favoritesArray = this.repo.getFavorites();
@@ -56,6 +70,8 @@ export class AppComponent implements OnInit {
     return gameFilterArr.slice(pageIndex,pageIndex + this.itemsPerPage);
 
   }
+
+
   getGenres() {
     this.mappedGenresArr = this.games.map((data)=>{
       return {

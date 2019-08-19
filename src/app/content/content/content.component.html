@@ -2,7 +2,7 @@
     <tbody>
             <tr *ngFor='let gameItem of gamesContentArr' class="gameTableRow">
                 <td class="w-25">
-                  <img src="https://pp.userapi.com/c307708/v307708812/ae36/A0cs3LRpzuQ.jpg" width="100">
+                  <img src={{gameItem.imgUrl}} width="100">
                 </td>
                 <td class="w-50">
                   <h5 class="text-truncate text-dark"><b>{{gameItem.shortName}}</b></h5>
