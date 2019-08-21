@@ -11,44 +11,87 @@ export class AppComponent implements OnInit {
   currentPage: number = 1;
   mappedGenresArr;
   mappedPlatformesArr;
+  mappedGenresArrForFilter;
+  mappedPlatformesArrForFilter;
+
   searchText = '';
   games = [];
   constructor(private repo:RepositorySevice) {
 
   }
 
+  changePage(numP: number) {
+    this.currentPage = numP;
+
+  }
+
+
   ngOnInit() {
-    //this.games = this.repo.getGames();
+
     this.repo.getGenres().subscribe((res)=>{
+      this.mappedGenresArrForFilter = res;
       this.mappedGenresArr = res.map((data)=>{
         return {
           'genre':data,
           'checked':true
         }
       });
-    });
-    this.repo.getPlatformes().subscribe((res)=>{
-      this.mappedPlatformesArr = res.map((data)=>{
-        return {
-          'platform':data,
-          'checked':true
-        }
-      });;
-    });
+
+      this.repo.getPlatformes().subscribe((res)=>{
+        this.mappedPlatformesArrForFilter = res;
+
+        this.mappedPlatformesArr = res.map((data)=>{
+          return {
+            'platform':data,
+            'checked':true
+          }
+        });
+
+        //this.changePage(1);
+
+      });
 
 
-    this.repo.getGames().subscribe((res)=>{
-      this.games = res;
-      //this.getPlatformes();
-      //this.getGenres();
     });
+
+    this.fillGamesAsync();
+
 
     this.favoritesArray = this.repo.getFavorites();
 
   };
-  changePage(numP: number) {
-    this.currentPage = numP;
+
+  arryProcess(body) {
+
+  let pr =new Promise( (res_,rej_) => {
+      this.repo.getGamesByPage(body).subscribe((res) => {
+        this.games = this.games.concat(res);
+        body.pageNumber++;
+        res_(body);
+
+      });
+
+  });
+  pr.then((body) => this.arryProcess(body));
+
+    return pr;
   }
+
+  async fillGamesAsync() {
+    let body = {
+      pageNumber : this.currentPage,
+      itemsPerPage: this.itemsPerPage,
+      platformes: this.mappedPlatformesArrForFilter,
+      genres: this.mappedGenresArrForFilter
+    };
+
+    this.arryProcess(body).then((body) => this.arryProcess(body) );
+
+
+  }
+
+
+
   get gamesArr():any {
     let pageIndex = (this.currentPage-1) * this.itemsPerPage
     let gameFilterArr;
@@ -68,7 +111,7 @@ export class AppComponent implements OnInit {
     });
 
     return gameFilterArr.slice(pageIndex,pageIndex + this.itemsPerPage);
-
+    //return gameFilterArr;
   }
 
 

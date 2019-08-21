@@ -12,7 +12,11 @@
                   <h6 class="text-truncate text-muted">{{gameItem.platformType}}</h6>
                 </td>
                 <td style="vertical-align: bottom" class="w-25">
-                  <button type="button" class="mb-3 btn btn-primary btn-round-xs btn-xs">Скачать</button>
+                  <button type="button" class="mb-3 btn btn-primary btn-round-xs btn-xs"
+                  (click) = "download(gameItem.downloadUrl)"
+                  >
+                    Скачать
+                  </button>
                 </td>
             </tr>
     </tbody>
