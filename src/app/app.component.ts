@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {RepositorySevice} from "./repository/repository.sevice";
+
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,6 +22,7 @@ export class AppComponent implements OnInit {
   constructor(private repo:RepositorySevice) {
 
   }
+
 
   changePage(numP: number) {
     this.currentPage = numP;
@@ -105,7 +109,7 @@ export class AppComponent implements OnInit {
     });
 
     gameFilterArr = gameFilterArr.filter((data)=>{
-      return data.shortName.indexOf(this.searchText) != -1;
+      return data.fullName.indexOf(this.searchText) != -1;
 
 
     });
@@ -160,6 +164,8 @@ export class AppComponent implements OnInit {
   search(text) {
     this.searchText = text;
   }
+
+
 
 
 

@@ -12,6 +12,27 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { SearchComponent } from './search/search.component';
 import { HttpModule } from '@angular/http';
 import {HttpClientModule} from "@angular/common/http";
+import { InfoComponent } from './info/info.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox'
+import {MatDialogModule} from '@angular/material/dialog';
+import {MDModModule} from './mdmod/mdmod.module'
+import {MatNativeDateModule} from '@angular/material/core';
+
+export type gameType = {
+  'shortName'    : string,
+  'fullName'     : string,
+  'platformType' : string,
+  'year'         : number,
+  'genreName'    : string,
+  'imgUrl'       : string,
+  'downloadUrl'  : string,
+  'annotation'   : string
+};
+export type platformType = {platform:string,checked:boolean};
+export type genreType = {genre:string,checked:boolean};
+
 
 @NgModule({
   declarations: [
@@ -21,16 +42,26 @@ import {HttpClientModule} from "@angular/common/http";
     FilterComponent,
     HeaderComponent,
     FavoritesComponent,
-    SearchComponent
+    SearchComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MDModModule,
+    MatNativeDateModule,
   ],
   providers: [RepositorySevice],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [InfoComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

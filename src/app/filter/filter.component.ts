@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {genreType, platformType} from "../app.module";
 
 @Component({
   selector: 'app-filter',
@@ -7,22 +8,22 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angula
 })
 export class FilterComponent implements OnInit,OnChanges {
   @Input()
-    genres= [];
+    genres:[genreType]= [null];
   @Input()
-    platformes= [];
+    platformes:[platformType]= [null];
   @Output()
      onGenreCheckEm = new EventEmitter();
   @Output()
      onPlatformCheckEm = new EventEmitter();
 
-  onGenreCheck(item: any) {
-    let foundItem = this.genres.filter((data)=>{return data.genre == item.target.id });
+  onGenreCheck(item: Event) {
+    let foundItem = this.genres.filter((data)=>{return data.genre == (item.target as HTMLFormElement).id });
     foundItem[0].checked= !foundItem[0].checked;
 
     this.onGenreCheckEm.emit(this.genres);
   }
-  onPlatformCheck(item: any) {
-    let foundItem = this.platformes.filter((data)=>{return data.platform == item.target.id });
+  onPlatformCheck(item: Event) {
+    let foundItem = this.platformes.filter((data)=>{return data.platform == (item.target as HTMLFormElement).id });
     foundItem[0].checked= !foundItem[0].checked;
 
     this.onPlatformCheckEm.emit(this.platformes);
@@ -30,10 +31,10 @@ export class FilterComponent implements OnInit,OnChanges {
 
 
 
-  get gameGenres():any {
+  get gameGenres():[genreType] {
     return this.genres;
   }
-  get gamePlatformes():any {
+  get gamePlatformes():[platformType] {
     return this.platformes;
   }
 

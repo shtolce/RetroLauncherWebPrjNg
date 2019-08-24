@@ -1,6 +1,9 @@
   <table class="gamesTable table table-hover" >
     <tbody>
-            <tr *ngFor='let gameItem of gamesContentArr' class="gameTableRow">
+            <tr *ngFor='let gameItem of gamesContentArr'
+                class="gameTableRow"
+                (click)="openInfo(gameItem)"
+            >
                 <td class="w-25">
                   <img src={{gameItem.imgUrl}} width="100">
                 </td>

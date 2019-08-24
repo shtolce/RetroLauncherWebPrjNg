@@ -1,6 +1,10 @@
 import {Component, Injectable, Input, OnChanges, SimpleChanges,} from '@angular/core';
 import {Http} from '@angular/http';
 import * as ts from "typescript";
+import {InfoComponent} from "../../info/info.component";
+import {MatDialog} from '@angular/material/dialog';
+import {gameType} from "../../app.module";
+
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -9,26 +13,33 @@ import * as ts from "typescript";
 @Injectable()
 export class ContentComponent implements OnChanges{
   @Input()
-  gamesContentArr:any;
+  gamesContentArr:gameType[];
 
   ngOnChanges(changes: SimpleChanges) {
     //console.log(changes);
   }
-  constructor (private http: Http) {
+  constructor (private http: Http, public dialog: MatDialog) {
+
+  }
+
+  openInfo(game: gameType) {
+    let dialogRef = this.dialog.open(InfoComponent, {
+      width: '650px',
+      height:'750px',
+      data: game
+    });
 
   }
 
 
   downloadFile(data: any) {
-    console.log(data);
-    //const blob = new Blob([data], { type: 'application/x-7z-compressed'});
-    //const url= window.URL.createObjectURL(blob);
+    //console.log(data);
     window.open(data);
   }
 
 
-  download(url) {
-    console.log(url);
+  download(url: string) {
+    //console.log(url);
     window.open(url)
     //this.http.get(url).subscribe(data => this.downloadFile(data._body));
     //var WshShell = new ActiveXObject("WScript.Shell");

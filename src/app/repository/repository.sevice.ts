@@ -46,7 +46,8 @@ export class RepositorySevice {
            'year'         : dat.year,
            'genreName'    : dat.genre,
            'imgUrl'       : dat.imgUrl,
-           'downloadUrl'  : dat.downloadUrl
+           'downloadUrl'  : dat.downloadUrl,
+           'annotation'   : dat.annotation
          }
        });
       return dataResponse;
@@ -81,8 +82,8 @@ export class RepositorySevice {
             'year'         : dat.year,
             'genreName'    : dat.genre,
             'imgUrl'       : dat.imgUrl,
-            'downloadUrl'  : dat.downloadUrl
-
+            'downloadUrl'  : dat.downloadUrl,
+            'annotation'   : dat.annotation
           }});
           return dataResponse;
         });
