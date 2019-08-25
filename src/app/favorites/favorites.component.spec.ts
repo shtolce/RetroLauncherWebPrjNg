@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FavoritesComponent } from './favorites.component';
 import {By} from "@angular/platform-browser";
 import {Component, ViewChild} from "@angular/core";
-import {RepositorySevice} from "../repository/repository.sevice";
 
 @Component({
   template:'<app-favorites [favArr] = "favoritesArray"></app-favorites>'

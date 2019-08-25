@@ -61,6 +61,8 @@ export type genreType = {genre:string,checked:boolean};
   providers: [RepositorySevice],
   bootstrap: [AppComponent],
   entryComponents: [InfoComponent]
+
+
 })
 export class AppModule {
 

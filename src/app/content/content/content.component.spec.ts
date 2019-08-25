@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContentComponent } from './content.component';
+import {Http} from "@angular/http";
+import {MatDialog} from "@angular/material";
 
 
 describe('ContentComponent', () => {
@@ -9,7 +11,12 @@ describe('ContentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentComponent ]
+      declarations: [ ContentComponent ],
+      providers: [
+        {provide:Http},
+        {provide:MatDialog}
+
+      ]
     })
     .compileComponents();
   }));
