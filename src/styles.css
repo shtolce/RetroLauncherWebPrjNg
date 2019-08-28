@@ -1,6 +1,20 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 /* You can add global styles to this file, and also import other style files */
+
+
+@font-face {
+  font-family: dendy;
+  src: url("assets/fonts/pixel-sagas_pixel-emulator/PixelEmulator-xq08.ttf") format("opentype");
+}
+@font-face {
+  font-family: dendyMario;
+  src: url("assets/fonts/24hourfonts_mario-and-luigi/MARIO.TTF") format("opentype");
+}
+
+
+
+
 .mainFrame {
   position: relative;
   height:95%;
@@ -8,6 +22,10 @@
 .mainHeader{
   position: relative;
   height: 5%;
+  background-color: #8F4E96;
+  align-content: left;
+  font-family: 'dendy', serif;
+  font-size: 48px;
 }
 
 html, body {
@@ -18,14 +36,51 @@ html, body {
 .mainContent{
   position: relative;
   height: 86%;
+  background-image: url('../src/images/backgrounds/contentBackGound2.png');
+  background-position: center;
+  background-size: contain;
+  background-attachment: local;
+}
+.mainFilter {
+  background-color: #97A1A6;
+
+
 
 }
+
+
+
 .mainFooter{
   position: relative;
   height: 7%;
+  background-color:#659C40;
+
 }
+
+
+.mainSearchLogo{
+  font-family: 'dendyMario', serif;
+  font-size: 36px;
+
+}
+
+
 .mainSearch{
   position: relative;
   height: 7%;
+  background-color: #8F4E96;
+}
+.mainSearchContent {
+  display: inline-flex;
+
+
+
 }
 
+
+
+
+.favMenu {
+  background-color: #D4A566
+
+}
